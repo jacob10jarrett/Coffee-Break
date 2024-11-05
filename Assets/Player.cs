@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -22,6 +23,12 @@ public class Player : MonoBehaviour
 
         // Set animation parameters based on movement input
         UpdateAnimationParameters();
+	   
+	   // Check if the player presses the "E" key to switch scenes
+	   if (Input.GetKeyDown(KeyCode.E))
+        {
+            LoadMakingOrderScene();
+        }
     }
 
     void FixedUpdate()
@@ -80,5 +87,10 @@ public class Player : MonoBehaviour
         {
             transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
         }
+    }
+    
+    private void LoadMakingOrderScene()
+    {
+        SceneManager.LoadScene("MakingOrder");
     }
 }
