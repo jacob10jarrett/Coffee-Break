@@ -1,54 +1,82 @@
 using UnityEngine;
-using UnityEngine.UI; // For Image, Button, etc.
-using TMPro; // For TextMeshPro elements
-using System.Collections.Generic; // For List
+using UnityEngine.UI;
+using TMPro;
+using System.Collections.Generic;
 
 public class DrinkManager : MonoBehaviour
 {
-    public List<Drink> drinks; // List of possible drinks
-    public Image drinkDisplay; // Image where the drink sprite will be displayed
-    public TextMeshProUGUI orderText; // Use TextMeshProUGUI for text
-    public TextMeshProUGUI feedbackText; // Use TextMeshProUGUI for feedback text
+    [System.Serializable]
+    public class Drink
+    {
+        public string drinkName;
+        public Sprite drinkImage;
+        public List<string> requiredIngredients;
+        public List<Sprite> ingredientIcons; // Add icons for each ingredient
+    }
+
+    public List<Drink> drinks;
+    public Image drinkDisplay;
+    public TextMeshProUGUI orderText;
+    public TextMeshProUGUI feedbackText;
+    public TextMeshProUGUI[] ingredientTexts; // Text for ingredient names
+    public Image[] ingredientImages; // Image components for ingredient icons next to arrows
 
     private Drink currentDrink;
-    private int currentStep = 0; // Tracks the current ingredient step
+    private int currentStep = 0;
 
     void Start()
     {
-        // Set a new drink order at the beginning
         SetNewOrder();
     }
 
     void SetNewOrder()
     {
-        // Choose a random drink order
         currentDrink = drinks[Random.Range(0, drinks.Count)];
         drinkDisplay.sprite = currentDrink.drinkImage;
         orderText.text = "Order: " + currentDrink.drinkName;
-        feedbackText.text = ""; // Clear feedback text
-        currentStep = 0; // Reset the step
+        feedbackText.text = "";
+        currentStep = 0;
+
+        UpdateIngredientDisplay();
+    }
+
+    void UpdateIngredientDisplay()
+    {
+        for (int i = 0; i < ingredientTexts.Length; i++)
+        {
+            if (i < currentDrink.requiredIngredients.Count)
+            {
+                ingredientTexts[i].text = currentDrink.requiredIngredients[i];
+                ingredientImages[i].sprite = currentDrink.ingredientIcons[i]; // Set ingredient icon
+                ingredientImages[i].enabled = true; // Show the image
+            }
+            else
+            {
+                ingredientTexts[i].text = "";
+                ingredientImages[i].enabled = false; // Hide the image if not used
+            }
+        }
     }
 
     public void CheckIngredient(string selectedIngredient)
     {
-        // Check if the selected ingredient matches the required ingredient
         if (selectedIngredient == currentDrink.requiredIngredients[currentStep])
         {
             feedbackText.text = "Correct!";
             currentStep++;
 
-            // Check if the drink is completed
             if (currentStep >= currentDrink.requiredIngredients.Count)
             {
                 Debug.Log("Order Completed!");
                 feedbackText.text = "Order Completed!";
-                Invoke("SetNewOrder", 2f); // Set a new order after a short delay
+                Invoke("SetNewOrder", 2f);
             }
         }
         else
         {
             feedbackText.text = "Wrong ingredient! Try again.";
-            currentStep = 0; // Reset if the wrong ingredient is selected
+            currentStep = 0;
+            UpdateIngredientDisplay();
         }
     }
 }
