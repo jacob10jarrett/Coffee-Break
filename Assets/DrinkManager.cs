@@ -18,14 +18,16 @@ public class DrinkManager : MonoBehaviour
     public Image drinkDisplay;
     public TextMeshProUGUI orderText;
     public TextMeshProUGUI feedbackText;
-    public TextMeshProUGUI[] ingredientTexts;
-    public Image[] ingredientImages;
-    public Image[] selectedIngredientImages;
+    public TextMeshProUGUI[] ingredientTexts; // Texts for main visible ingredients (4 ingredients)
+    public TextMeshProUGUI[] neededIngredientTexts; // Texts for required ingredients only (up to 4 ingredients)
+    public Image[] ingredientImages; // Icons for main visible ingredients (4 ingredients)
+    public Image[] selectedIngredientImages; // UI to display selected ingredients at the top
     [SerializeField] private Sprite[] dummyIngredientIcons;
+    [SerializeField] private string[] dummyIngredientNames;
 
     private Drink currentDrink;
-    private int currentStep = 0;
-    private int selectedIndex = 0; // Tracks the currently selected ingredient
+    private HashSet<string> selectedIngredients; // Tracks selected ingredients
+    private Dictionary<KeyCode, string> arrowIngredients; // Maps arrow keys to ingredient names
 
     void Start()
     {
@@ -35,15 +37,9 @@ public class DrinkManager : MonoBehaviour
             return;
         }
 
-        if (ingredientTexts == null || ingredientImages == null || selectedIngredientImages == null)
+        if (ingredientTexts.Length != 4 || ingredientImages.Length != 4 || selectedIngredientImages.Length != 4 || neededIngredientTexts.Length != 4)
         {
-            Debug.LogError("UI arrays are not assigned. Please assign them in the Inspector.");
-            return;
-        }
-
-        if (ingredientTexts.Length != ingredientImages.Length || selectedIngredientImages.Length < ingredientTexts.Length)
-        {
-            Debug.LogError("Mismatch between UI arrays. Ensure they are properly configured.");
+            Debug.LogError("UI arrays must have exactly 4 elements.");
             return;
         }
 
@@ -57,51 +53,23 @@ public class DrinkManager : MonoBehaviour
 
     void HandleInput()
     {
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        // Check for arrow key presses and select the corresponding ingredient
+        if (Input.GetKeyDown(KeyCode.UpArrow) && arrowIngredients.ContainsKey(KeyCode.UpArrow))
         {
-            NavigateIngredients(-1);
+            CheckIngredient(arrowIngredients[KeyCode.UpArrow]);
         }
-        else if (Input.GetKeyDown(KeyCode.DownArrow))
+        else if (Input.GetKeyDown(KeyCode.DownArrow) && arrowIngredients.ContainsKey(KeyCode.DownArrow))
         {
-            NavigateIngredients(1);
+            CheckIngredient(arrowIngredients[KeyCode.DownArrow]);
         }
-        else if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return))
+        else if (Input.GetKeyDown(KeyCode.LeftArrow) && arrowIngredients.ContainsKey(KeyCode.LeftArrow))
         {
-            ConfirmIngredient();
+            CheckIngredient(arrowIngredients[KeyCode.LeftArrow]);
         }
-    }
-
-    void NavigateIngredients(int direction)
-    {
-        // Adjust the selected index and loop around if needed
-        selectedIndex = (selectedIndex + direction + ingredientTexts.Length) % ingredientTexts.Length;
-
-        UpdateSelectionHighlight();
-    }
-
-    void UpdateSelectionHighlight()
-    {
-        // Highlight the currently selected ingredient
-        for (int i = 0; i < ingredientTexts.Length; i++)
+        else if (Input.GetKeyDown(KeyCode.RightArrow) && arrowIngredients.ContainsKey(KeyCode.RightArrow))
         {
-            if (i == selectedIndex)
-            {
-                ingredientTexts[i].color = Color.yellow; // Highlight
-            }
-            else
-            {
-                ingredientTexts[i].color = Color.white; // Default
-            }
+            CheckIngredient(arrowIngredients[KeyCode.RightArrow]);
         }
-    }
-
-    void ConfirmIngredient()
-    {
-        // Get the currently selected ingredient
-        string selectedIngredient = ingredientTexts[selectedIndex].text;
-
-        // Validate the ingredient
-        CheckIngredient(selectedIngredient);
     }
 
     void SetNewOrder()
@@ -118,23 +86,30 @@ public class DrinkManager : MonoBehaviour
         drinkDisplay.sprite = currentDrink.drinkImage;
         orderText.text = "Order: " + currentDrink.drinkName;
         feedbackText.text = "";
-        currentStep = 0;
+        selectedIngredients = new HashSet<string>();
 
         ResetSelectedIngredients();
-        UpdateIngredientDisplay();
+        AssignArrowIngredients();
+        DisplayNeededIngredients();
     }
 
-    void UpdateIngredientDisplay()
+    void AssignArrowIngredients()
     {
+        arrowIngredients = new Dictionary<KeyCode, string>();
+
+        // Create a pool of ingredients
         List<string> ingredientPool = new List<string>(currentDrink.requiredIngredients);
         List<Sprite> iconPool = new List<Sprite>(currentDrink.ingredientIcons);
 
-        while (ingredientPool.Count < ingredientImages.Length)
+        // Add dummy ingredients to fill up slots
+        while (ingredientPool.Count < 4)
         {
-            ingredientPool.Add("Dummy Ingredient");
-            iconPool.Add(dummyIngredientIcons[Random.Range(0, dummyIngredientIcons.Length)]);
+            int dummyIndex = Random.Range(0, dummyIngredientNames.Length);
+            ingredientPool.Add(dummyIngredientNames[dummyIndex]);
+            iconPool.Add(dummyIngredientIcons[dummyIndex]);
         }
 
+        // Shuffle the pool
         for (int i = ingredientPool.Count - 1; i > 0; i--)
         {
             int randomIndex = Random.Range(0, i + 1);
@@ -142,41 +117,82 @@ public class DrinkManager : MonoBehaviour
             (iconPool[i], iconPool[randomIndex]) = (iconPool[randomIndex], iconPool[i]);
         }
 
-        for (int i = 0; i < ingredientImages.Length; i++)
+        // Assign ingredients to arrow keys and update UI
+        for (int i = 0; i < 4; i++)
         {
-            if (i < ingredientPool.Count)
+            KeyCode arrowKey = i switch
             {
-                ingredientTexts[i].text = ingredientPool[i];
-                ingredientImages[i].sprite = iconPool[i];
-                ingredientImages[i].enabled = true;
+                0 => KeyCode.UpArrow,
+                1 => KeyCode.DownArrow,
+                2 => KeyCode.LeftArrow,
+                3 => KeyCode.RightArrow,
+                _ => KeyCode.None
+            };
+
+            arrowIngredients[arrowKey] = ingredientPool[i];
+            ingredientTexts[i].text = ingredientPool[i];
+            ingredientImages[i].sprite = iconPool[i];
+            ingredientImages[i].enabled = true;
+        }
+    }
+
+    void DisplayNeededIngredients()
+    {
+        // Display only the needed ingredients on the left
+        for (int i = 0; i < neededIngredientTexts.Length; i++)
+        {
+            if (i < currentDrink.requiredIngredients.Count)
+            {
+                neededIngredientTexts[i].text = currentDrink.requiredIngredients[i];
             }
             else
             {
-                ingredientTexts[i].text = "";
-                ingredientImages[i].enabled = false;
+                neededIngredientTexts[i].text = ""; // Clear unused slots
             }
         }
-
-        selectedIndex = 0; // Reset to the first ingredient
-        UpdateSelectionHighlight();
     }
 
     public void CheckIngredient(string selectedIngredient)
     {
-        string correctIngredient = currentDrink.requiredIngredients[currentStep];
-
-        if (selectedIngredient == correctIngredient)
+        if (currentDrink.requiredIngredients.Contains(selectedIngredient) && !selectedIngredients.Contains(selectedIngredient))
         {
-            feedbackText.text = "Correct!";
-            if (currentStep < selectedIngredientImages.Length)
+            selectedIngredients.Add(selectedIngredient);
+
+            // Update the top UI to display the selected ingredient
+            for (int i = 0; i < selectedIngredientImages.Length; i++)
             {
-                selectedIngredientImages[currentStep].sprite = ingredientImages[selectedIndex].sprite;
-                selectedIngredientImages[currentStep].enabled = true;
+                if (!selectedIngredientImages[i].enabled)
+                {
+                    // Find the correct sprite from arrowIngredients
+                    foreach (var pair in arrowIngredients)
+                    {
+                        if (pair.Value == selectedIngredient)
+                        {
+                            int index = pair.Key switch
+                            {
+                                KeyCode.UpArrow => 0,
+                                KeyCode.DownArrow => 1,
+                                KeyCode.LeftArrow => 2,
+                                KeyCode.RightArrow => 3,
+                                _ => -1
+                            };
+
+                            if (index >= 0 && index < ingredientImages.Length)
+                            {
+                                selectedIngredientImages[i].sprite = ingredientImages[index].sprite;
+                                selectedIngredientImages[i].enabled = true;
+                            }
+                            break;
+                        }
+                    }
+                    break;
+                }
             }
 
-            currentStep++;
+            feedbackText.text = "Correct!";
 
-            if (currentStep >= currentDrink.requiredIngredients.Count)
+            // Check if all ingredients have been selected
+            if (selectedIngredients.Count == currentDrink.requiredIngredients.Count)
             {
                 feedbackText.text = "Order Completed!";
                 Invoke("SetNewOrder", 2f);
@@ -184,9 +200,7 @@ public class DrinkManager : MonoBehaviour
         }
         else
         {
-            feedbackText.text = "Wrong ingredient! Try again.";
-            ResetSelectedIngredients();
-            currentStep = 0;
+            feedbackText.text = "Wrong ingredient or already selected!";
         }
     }
 
@@ -194,11 +208,13 @@ public class DrinkManager : MonoBehaviour
     {
         foreach (var box in selectedIngredientImages)
         {
-            if (box != null)
-            {
-                box.sprite = null;
-                box.enabled = false;
-            }
+            box.sprite = null;
+            box.enabled = false;
+        }
+
+        foreach (var neededText in neededIngredientTexts)
+        {
+            neededText.text = ""; // Clear the needed ingredients display
         }
     }
 }
