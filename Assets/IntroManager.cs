@@ -43,7 +43,7 @@ public class IntroManager : MonoBehaviour
         // Fade in the text
         if (introText != null)
         {
-            string message = "In a city that never stops, this little coffee shop feels like the one place where time slows down.";
+            string message = "Hey, it's great to have another employee. I'll get you started with the basics.";
             for (int i = 0; i <= message.Length; i++)
             {
                 introText.text = message.Substring(0, i);
