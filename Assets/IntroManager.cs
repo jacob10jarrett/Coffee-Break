@@ -17,6 +17,7 @@ public class IntroManager : MonoBehaviour
     private int selectedOption = 0; // Index of the currently selected option
     private bool optionsEnabled = false; // Whether the player can interact with options
     private bool isTyping = false; // To prevent input while typewriter effect is running
+    private Mood currentMood = Mood.Neutral;
 
     void Start()
     {
