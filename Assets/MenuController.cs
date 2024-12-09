@@ -4,9 +4,8 @@ using UnityEngine.UI;
 using System.Collections; // Required for IEnumerator
 
 #if UNITY_EDITOR
-using UnityEditor; 
+using UnityEditor;
 #endif
-
 
 public class MenuController : MonoBehaviour
 {
@@ -21,15 +20,15 @@ public class MenuController : MonoBehaviour
     }
 
     // Function called when the Quit button is pressed
-	public void QuitGame()
-	{
-	    Debug.Log("Quit Game");
-	#if UNITY_EDITOR
-	    EditorApplication.isPlaying = false; // Stop play mode in the editor
-	#else
-	    Application.Quit(); // Quit the application in a build
-	#endif
-	}
+    public void QuitGame()
+    {
+        Debug.Log("Quit Game");
+    #if UNITY_EDITOR
+        EditorApplication.isPlaying = false; // Stop play mode in the editor
+    #else
+        Application.Quit(); // Quit the application in a build
+    #endif
+    }
 
     private IEnumerator TransitionToGame()
     {
@@ -41,9 +40,11 @@ public class MenuController : MonoBehaviour
             elapsedTime += Time.deltaTime;
             float t = elapsedTime / transitionDuration;
 
-            // Smoothly interpolate pixel size values (cast to int)
-            pixelateEffect.pixelSizeX = (int)Mathf.Lerp(8, 20, t);
-            pixelateEffect.pixelSizeY = (int)Mathf.Lerp(8, 20, t);
+            // Smoothly interpolate the base pixel size
+            if (pixelateEffect != null)
+            {
+                pixelateEffect.basePixelSize = (int)Mathf.Lerp(8, 20, t);
+            }
 
             // Smoothly fade the screen to black
             if (fadeOverlay != null)
@@ -57,8 +58,10 @@ public class MenuController : MonoBehaviour
         }
 
         // Ensure the pixelation effect and fade-out are fully applied
-        pixelateEffect.pixelSizeX = 20;
-        pixelateEffect.pixelSizeY = 20;
+        if (pixelateEffect != null)
+        {
+            pixelateEffect.basePixelSize = 20;
+        }
 
         if (fadeOverlay != null)
         {
