@@ -1,0 +1,1302 @@
+fileFormatVersion: 2
+guid: eeae769c96d3a72469cf13685c9789d5
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: animatedcoffeecupspritesheet2_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3744
+        width: 312
+        height: 468
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1edf7566baa92b4681c42f8fad47603
+      internalID: -1706044859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: animatedcoffeecupspritesheet2_1
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 3744
+        width: 312
+        height: 468
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d173e39eaf6cfba4fbbcdd1d13eee78c
+      internalID: 225380617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: animatedcoffeecupspritesheet2_2
+      rect:
+        serializedVersion: 2
+        x: 624
+        y: 3744
+        width: 312
+        height: 468
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20d60d9d65281784c93ecbd7a96c1345
+      internalID: 1417268698
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: animatedcoffeecupspritesheet2_3
+      rect:
+        serializedVersion: 2
+        x: 936
+        y: 3744
+        width: 312
+        height: 468
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c08d2829f02a6343bfa5c95669d15fd
+      internalID: 695185328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: animatedcoffeecupspritesheet2_4
+      rect:
+        serializedVersion: 2
+        x: 1248
+        y: 3744
+        width: 312
+        height: 468
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e67129406aa12d04cba93d63c8b2bfea
+      internalID: -1249768240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: animatedcoffeecupspritesheet2_5
+      rect:
+        serializedVersion: 2
+        x: 1560
+        y: 3744
+        width: 312
+        height: 468
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c2389b006507554ea9c5bc5ad6c4eda
+      internalID: -2095717630
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: animatedcoffeecupspritesheet2_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3276
+        width: 312
+        height: 468
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f3d8088375fd0e4bb8ce4a0c3ecbd10
+      internalID: -1087748742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: animatedcoffeecupspritesheet2_7
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 3276
+        width: 312
+        height: 468
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 068d435786fedbc45978f5ba6cdf0d9d
+      internalID: -1349715425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: animatedcoffeecupspritesheet2_8
+      rect:
+        serializedVersion: 2
+        x: 624
+        y: 3276
+        width: 312
+        height: 468
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ef9f07b20e48d940890b210d92631ab
+      internalID: -1639060218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: animatedcoffeecupspritesheet2_9
+      rect:
+        serializedVersion: 2
+        x: 936
+        y: 3276
+        width: 312
+        height: 468
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dcb40998a052e4d4d8774b0bfd4d8bd3
+      internalID: -1073404707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: animatedcoffeecupspritesheet2_10
+      rect:
+        serializedVersion: 2
+        x: 1248
+        y: 3276
+        width: 312
+        height: 468
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55cb81db73fcc1740baec50bb5b68728
+      internalID: 821219293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: animatedcoffeecupspritesheet2_11
+      rect:
+        serializedVersion: 2
+        x: 1560
+        y: 3276
+        width: 312
+        height: 468
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 551ff9eb52a680b46a1ffac881fc7ea6
+      internalID: -1318192446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: animatedcoffeecupspritesheet2_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2808
+        width: 312
+        height: 468
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ece015d88cbfeaf4db7e498618f8fd84
+      internalID: 442836830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: animatedcoffeecupspritesheet2_13
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 2808
+        width: 312
+        height: 468
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2cea9507d20c23641b012e437b0fe959
+      internalID: 583443909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: animatedcoffeecupspritesheet2_14
+      rect:
+        serializedVersion: 2
+        x: 624
+        y: 2808
+        width: 312
+        height: 468
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c5c8c5b22410bc4bb14cb9e46ce1682
+      internalID: -737550785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: animatedcoffeecupspritesheet2_15
+      rect:
+        serializedVersion: 2
+        x: 936
+        y: 2808
+        width: 312
+        height: 468
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3553e1aa0ae2eb408ab7c1f5df812f7
+      internalID: -315002530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: animatedcoffeecupspritesheet2_16
+      rect:
+        serializedVersion: 2
+        x: 1248
+        y: 2808
+        width: 312
+        height: 468
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a415dea7c79a31d468e038fca65bbe03
+      internalID: 1541125834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: animatedcoffeecupspritesheet2_17
+      rect:
+        serializedVersion: 2
+        x: 1560
+        y: 2808
+        width: 312
+        height: 468
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a024bba7c4aae64bae885cb976f2c02
+      internalID: -2007802583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: animatedcoffeecupspritesheet2_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2340
+        width: 312
+        height: 468
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1bb57f519b8721d4cb9b7fa424e20e7c
+      internalID: 1513424618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: animatedcoffeecupspritesheet2_19
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 2340
+        width: 312
+        height: 468
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ee7f06d29167824c915b1f1b0f61262
+      internalID: 1960323151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: animatedcoffeecupspritesheet2_20
+      rect:
+        serializedVersion: 2
+        x: 624
+        y: 2340
+        width: 312
+        height: 468
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9cfdf23cdca38d84bb1f8d2598cd8c38
+      internalID: 1346979662
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: animatedcoffeecupspritesheet2_21
+      rect:
+        serializedVersion: 2
+        x: 936
+        y: 2340
+        width: 312
+        height: 468
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1bafd72192ca14841878f4cd0888be0b
+      internalID: -214363647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: animatedcoffeecupspritesheet2_22
+      rect:
+        serializedVersion: 2
+        x: 1248
+        y: 2340
+        width: 312
+        height: 468
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f669d924ff90e245b93824b0ce325d9
+      internalID: -1888579979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: animatedcoffeecupspritesheet2_23
+      rect:
+        serializedVersion: 2
+        x: 1560
+        y: 2340
+        width: 312
+        height: 468
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8c1910b537999449b339967472d43a8
+      internalID: 409109576
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: animatedcoffeecupspritesheet2_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1872
+        width: 312
+        height: 468
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd144f4ab853d7241a82672353ee04cd
+      internalID: 1796494768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: animatedcoffeecupspritesheet2_25
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 1872
+        width: 312
+        height: 468
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4fea222393b49644b8e716c89c28e757
+      internalID: 884274115
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: animatedcoffeecupspritesheet2_26
+      rect:
+        serializedVersion: 2
+        x: 624
+        y: 1872
+        width: 312
+        height: 468
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23c0a5903d0ee5545a3a7f9e8312a971
+      internalID: -935656168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: animatedcoffeecupspritesheet2_27
+      rect:
+        serializedVersion: 2
+        x: 936
+        y: 1872
+        width: 312
+        height: 468
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 963e6e60a9a10d9478ebd85a1c1c9ced
+      internalID: 786802933
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: animatedcoffeecupspritesheet2_28
+      rect:
+        serializedVersion: 2
+        x: 1248
+        y: 1872
+        width: 312
+        height: 468
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e132ffd6a96cdd4cab045702e50a4ea
+      internalID: 1226245861
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: animatedcoffeecupspritesheet2_29
+      rect:
+        serializedVersion: 2
+        x: 1560
+        y: 1872
+        width: 312
+        height: 468
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03f54c89d14eb7049bf9050a2b55543a
+      internalID: 276330562
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: animatedcoffeecupspritesheet2_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1404
+        width: 312
+        height: 468
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 145cb7183474f524c8acbe0cc6a38e74
+      internalID: -1584237026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: animatedcoffeecupspritesheet2_31
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 1404
+        width: 312
+        height: 468
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85fde08e031c79148bea803d82ea2a00
+      internalID: 1986926072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: animatedcoffeecupspritesheet2_32
+      rect:
+        serializedVersion: 2
+        x: 624
+        y: 1404
+        width: 312
+        height: 468
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21fe5a2efcda39c4a93353a4216589da
+      internalID: 588053037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: animatedcoffeecupspritesheet2_33
+      rect:
+        serializedVersion: 2
+        x: 936
+        y: 1404
+        width: 312
+        height: 468
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 911de83b2bdeb2e40bf47c75763a0950
+      internalID: 641141528
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: animatedcoffeecupspritesheet2_34
+      rect:
+        serializedVersion: 2
+        x: 1248
+        y: 1404
+        width: 312
+        height: 468
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc5efd59240321d4fa1e81ca2247bd58
+      internalID: 1777166775
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: animatedcoffeecupspritesheet2_35
+      rect:
+        serializedVersion: 2
+        x: 1560
+        y: 1404
+        width: 312
+        height: 468
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39dd7bc26a67dbf4fa8d3cd8ef759b00
+      internalID: 399769460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: animatedcoffeecupspritesheet2_36
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 936
+        width: 312
+        height: 468
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11b7dc59923e11543a6ed28ef56d20ed
+      internalID: 589005636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: animatedcoffeecupspritesheet2_37
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 936
+        width: 312
+        height: 468
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: afb39e6240a52c34dabea4117540261a
+      internalID: -613315424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: animatedcoffeecupspritesheet2_38
+      rect:
+        serializedVersion: 2
+        x: 624
+        y: 936
+        width: 312
+        height: 468
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da1ece11d2fed24449bd102c06fc3bf5
+      internalID: -1900015648
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: animatedcoffeecupspritesheet2_39
+      rect:
+        serializedVersion: 2
+        x: 936
+        y: 936
+        width: 312
+        height: 468
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08c9dce87150ba04b8f0c15137c940c7
+      internalID: 582350419
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: animatedcoffeecupspritesheet2_40
+      rect:
+        serializedVersion: 2
+        x: 1248
+        y: 936
+        width: 312
+        height: 468
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f793de19f3b0524fa68968cf3210dde
+      internalID: -481908505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: animatedcoffeecupspritesheet2_41
+      rect:
+        serializedVersion: 2
+        x: 1560
+        y: 936
+        width: 312
+        height: 468
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4442153b5512cd84b88b6b4d0470ad37
+      internalID: 218200878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: animatedcoffeecupspritesheet2_42
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 468
+        width: 312
+        height: 468
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d85865437022e3d4bb5294ae209c5ce6
+      internalID: 420044043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: animatedcoffeecupspritesheet2_43
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 468
+        width: 312
+        height: 468
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5be5f4c068bff341945be6bd0d223b6
+      internalID: -465616924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: animatedcoffeecupspritesheet2_44
+      rect:
+        serializedVersion: 2
+        x: 624
+        y: 468
+        width: 312
+        height: 468
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 725b79a947ac57c419add3dd2dcb11cf
+      internalID: -501591688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: animatedcoffeecupspritesheet2_45
+      rect:
+        serializedVersion: 2
+        x: 936
+        y: 468
+        width: 312
+        height: 468
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3338dc3efa257cd4fb06b60b18ed4751
+      internalID: 285384122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: animatedcoffeecupspritesheet2_46
+      rect:
+        serializedVersion: 2
+        x: 1248
+        y: 468
+        width: 312
+        height: 468
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71ad2c354d645e944a9fadab036b27cd
+      internalID: -686049573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: animatedcoffeecupspritesheet2_47
+      rect:
+        serializedVersion: 2
+        x: 1560
+        y: 468
+        width: 312
+        height: 468
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db11d5e75fce9d24291f045603c40d60
+      internalID: -220677978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: animatedcoffeecupspritesheet2_48
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 312
+        height: 468
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2fdd61f88cda52e4fbf184c523fca419
+      internalID: -1596080813
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: animatedcoffeecupspritesheet2_49
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 0
+        width: 312
+        height: 468
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52b4b59807d52934394943c48b341e3a
+      internalID: 728953294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: animatedcoffeecupspritesheet2_50
+      rect:
+        serializedVersion: 2
+        x: 624
+        y: 0
+        width: 312
+        height: 468
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a7288ea51c7f674e955ffae9726f8c0
+      internalID: 1321350816
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: animatedcoffeecupspritesheet2_51
+      rect:
+        serializedVersion: 2
+        x: 936
+        y: 0
+        width: 312
+        height: 468
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 412b558b3aa30d640b8670f505aedf7b
+      internalID: -1723909345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: animatedcoffeecupspritesheet2_52
+      rect:
+        serializedVersion: 2
+        x: 1248
+        y: 0
+        width: 312
+        height: 468
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f2c8a694da7b394ebfdefe4832787da
+      internalID: -663035233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: animatedcoffeecupspritesheet2_53
+      rect:
+        serializedVersion: 2
+        x: 1560
+        y: 0
+        width: 312
+        height: 468
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6691c278ac9d39940b988e96ed1b3fe4
+      internalID: 1602451466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      animatedcoffeecupspritesheet2_0: -1706044859
+      animatedcoffeecupspritesheet2_1: 225380617
+      animatedcoffeecupspritesheet2_10: 821219293
+      animatedcoffeecupspritesheet2_11: -1318192446
+      animatedcoffeecupspritesheet2_12: 442836830
+      animatedcoffeecupspritesheet2_13: 583443909
+      animatedcoffeecupspritesheet2_14: -737550785
+      animatedcoffeecupspritesheet2_15: -315002530
+      animatedcoffeecupspritesheet2_16: 1541125834
+      animatedcoffeecupspritesheet2_17: -2007802583
+      animatedcoffeecupspritesheet2_18: 1513424618
+      animatedcoffeecupspritesheet2_19: 1960323151
+      animatedcoffeecupspritesheet2_2: 1417268698
+      animatedcoffeecupspritesheet2_20: 1346979662
+      animatedcoffeecupspritesheet2_21: -214363647
+      animatedcoffeecupspritesheet2_22: -1888579979
+      animatedcoffeecupspritesheet2_23: 409109576
+      animatedcoffeecupspritesheet2_24: 1796494768
+      animatedcoffeecupspritesheet2_25: 884274115
+      animatedcoffeecupspritesheet2_26: -935656168
+      animatedcoffeecupspritesheet2_27: 786802933
+      animatedcoffeecupspritesheet2_28: 1226245861
+      animatedcoffeecupspritesheet2_29: 276330562
+      animatedcoffeecupspritesheet2_3: 695185328
+      animatedcoffeecupspritesheet2_30: -1584237026
+      animatedcoffeecupspritesheet2_31: 1986926072
+      animatedcoffeecupspritesheet2_32: 588053037
+      animatedcoffeecupspritesheet2_33: 641141528
+      animatedcoffeecupspritesheet2_34: 1777166775
+      animatedcoffeecupspritesheet2_35: 399769460
+      animatedcoffeecupspritesheet2_36: 589005636
+      animatedcoffeecupspritesheet2_37: -613315424
+      animatedcoffeecupspritesheet2_38: -1900015648
+      animatedcoffeecupspritesheet2_39: 582350419
+      animatedcoffeecupspritesheet2_4: -1249768240
+      animatedcoffeecupspritesheet2_40: -481908505
+      animatedcoffeecupspritesheet2_41: 218200878
+      animatedcoffeecupspritesheet2_42: 420044043
+      animatedcoffeecupspritesheet2_43: -465616924
+      animatedcoffeecupspritesheet2_44: -501591688
+      animatedcoffeecupspritesheet2_45: 285384122
+      animatedcoffeecupspritesheet2_46: -686049573
+      animatedcoffeecupspritesheet2_47: -220677978
+      animatedcoffeecupspritesheet2_48: -1596080813
+      animatedcoffeecupspritesheet2_49: 728953294
+      animatedcoffeecupspritesheet2_5: -2095717630
+      animatedcoffeecupspritesheet2_50: 1321350816
+      animatedcoffeecupspritesheet2_51: -1723909345
+      animatedcoffeecupspritesheet2_52: -663035233
+      animatedcoffeecupspritesheet2_53: 1602451466
+      animatedcoffeecupspritesheet2_6: -1087748742
+      animatedcoffeecupspritesheet2_7: -1349715425
+      animatedcoffeecupspritesheet2_8: -1639060218
+      animatedcoffeecupspritesheet2_9: -1073404707
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

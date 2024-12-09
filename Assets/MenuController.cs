@@ -42,8 +42,8 @@ public class MenuController : MonoBehaviour
             float t = elapsedTime / transitionDuration;
 
             // Smoothly interpolate pixel size values (cast to int)
-            pixelateEffect.pixelSizeX = (int)Mathf.Lerp(1, 20, t);
-            pixelateEffect.pixelSizeY = (int)Mathf.Lerp(1, 20, t);
+            pixelateEffect.pixelSizeX = (int)Mathf.Lerp(8, 20, t);
+            pixelateEffect.pixelSizeY = (int)Mathf.Lerp(8, 20, t);
 
             // Smoothly fade the screen to black
             if (fadeOverlay != null)
