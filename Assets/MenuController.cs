@@ -11,6 +11,7 @@ public class MenuController : MonoBehaviour
 {
     public Pixelate pixelateEffect; // Reference to the Pixelate script on the camera
     public Image fadeOverlay; // Reference to a UI Image for fade-out effect
+    public AudioSource backgroundMusic; // Reference to the AudioSource playing the background music
     public float transitionDuration = 1f; // Duration of the fade-out effect
 
     // Function called when the Play button is pressed
@@ -33,8 +34,15 @@ public class MenuController : MonoBehaviour
     private IEnumerator TransitionToGame()
     {
         float elapsedTime = 0f;
+        float initialVolume = 0f;
 
-        // Gradually fade to black and increase pixelation
+        // Get the initial volume of the music
+        if (backgroundMusic != null)
+        {
+            initialVolume = backgroundMusic.volume;
+        }
+
+        // Gradually fade to black, increase pixelation, and fade out music
         while (elapsedTime < transitionDuration)
         {
             elapsedTime += Time.deltaTime;
@@ -54,6 +62,12 @@ public class MenuController : MonoBehaviour
                 fadeOverlay.color = color;
             }
 
+            // Smoothly fade out the music
+            if (backgroundMusic != null)
+            {
+                backgroundMusic.volume = Mathf.Lerp(initialVolume, 0, t);
+            }
+
             yield return null;
         }
 
@@ -68,6 +82,13 @@ public class MenuController : MonoBehaviour
             Color color = fadeOverlay.color;
             color.a = 1;
             fadeOverlay.color = color;
+        }
+
+        // Ensure the music is completely stopped
+        if (backgroundMusic != null)
+        {
+            backgroundMusic.volume = 0;
+            backgroundMusic.Stop();
         }
 
         // Load the next scene

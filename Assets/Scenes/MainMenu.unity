@@ -1113,7 +1113,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pixelateEffect: {fileID: 359834147}
   fadeOverlay: {fileID: 1147109144}
-  transitionDuration: 1.5
+  backgroundMusic: {fileID: 1387227602}
+  transitionDuration: 2
 --- !u!4 &873665308
 Transform:
   m_ObjectHideFlags: 0
@@ -1583,9 +1584,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 4f825f201eaa8284283f3cabc28a005d, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 40ed994bef06f4f4fbb8bcb904905d40, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0

@@ -23,4 +23,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: fadca5fda0607b042999feb88092f958
+  - enabled: 1
+    path: Assets/Scenes/Fail.unity
+    guid: 5314283b2b876c24bbe21d57574d99d1
+  - enabled: 1
+    path: Assets/Scenes/AI_Dialogue.unity
+    guid: d40df403399e59a47a2fc14174aa326a
   m_configObjects: {}
