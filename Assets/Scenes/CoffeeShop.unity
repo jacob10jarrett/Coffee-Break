@@ -431,7 +431,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Press E to make coffee
+  m_text: Press E to make drinks
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b1f46f3b07efd0449b31758c33b02d5a, type: 2}
   m_sharedMaterial: {fileID: -3474962511058186812, guid: b1f46f3b07efd0449b31758c33b02d5a, type: 2}
@@ -761,8 +761,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shader: {fileID: 4800000, guid: 703b245f98d111d418d988ba74eefbce, type: 3}
-  pixelSizeX: 1
-  pixelSizeY: 1
+  basePixelSize: 1
+  referenceWidth: 1920
+  referenceHeight: 1080
   lockXY: 0
 --- !u!1 &87104952
 GameObject:

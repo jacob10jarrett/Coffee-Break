@@ -223,8 +223,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 134651395}
-  - component: {fileID: 134651394}
   - component: {fileID: 134651396}
+  - component: {fileID: 134651397}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -232,32 +232,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &134651394
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 134651393}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 870fc7f8dd704dd44bc02ae4e784a01c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gitaIntroText: {fileID: 1042085595}
-  finnResponseText: {fileID: 1199970925}
-  finnDialogueOptions:
-  - {fileID: 1421614924}
-  - {fileID: 411276937}
-  - {fileID: 907024249}
-  ellipsisText: {fileID: 1042085595}
-  optionSoundEffect: {fileID: 0}
-  talkSoundEffect: {fileID: 0}
-  navigationSoundEffect: {fileID: 275199706}
-  highlightedColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  defaultColor: {r: 1, g: 1, b: 1, a: 1}
-  nextSceneName: CoffeeShop
-  typeSpeed: 0.05
 --- !u!4 &134651395
 Transform:
   m_ObjectHideFlags: 0
@@ -369,11 +343,32 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!82 &275199706 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 6822914220610064133, guid: 643dd163293a6e841b979e06d0ccb511, type: 3}
-  m_PrefabInstance: {fileID: 2056275343}
+--- !u!114 &134651397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 134651393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7ede4ab2641f6c449710827e7de1e64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  npcText: {fileID: 1042085595}
+  finnText: {fileID: 411276937}
+  playerOptions:
+  - {fileID: 1421614924}
+  - {fileID: 411276937}
+  - {fileID: 907024249}
+  orderText: {fileID: 0}
+  audioSource: {fileID: 134651396}
+  talkSoundEffect: {fileID: 0}
+  correctSFX: {fileID: 0}
+  encourageSFX: {fileID: 0}
+  orderCompleteSFX: {fileID: 0}
+  navigationSoundEffect: {fileID: 8300000, guid: ee3aaeacb1f52f64aaab307ba30ee0f0, type: 3}
+  typeSpeed: 0.05
 --- !u!1 &411276934
 GameObject:
   m_ObjectHideFlags: 0

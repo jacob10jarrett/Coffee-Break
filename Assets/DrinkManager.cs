@@ -1,8 +1,9 @@
-using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
-using System.Collections.Generic;
+using UnityEngine; 
 using UnityEngine.SceneManagement;
+using TMPro;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class DrinkManager : MonoBehaviour
 {
@@ -19,7 +20,7 @@ public class DrinkManager : MonoBehaviour
     public Image drinkDisplay;
     public TextMeshProUGUI orderText;
     public TextMeshProUGUI feedbackText;
-    public TextMeshProUGUI timerText; // Timer text at the top
+    public TextMeshProUGUI timerText; 
     public TextMeshProUGUI[] ingredientTexts; 
     public TextMeshProUGUI[] neededIngredientTexts;
     public Image[] ingredientImages; 
@@ -28,34 +29,45 @@ public class DrinkManager : MonoBehaviour
     [SerializeField] private string[] dummyIngredientNames;
 
     public Image progressBar;
-    [SerializeField] private int drinksRequiredForCompletion = 3;
-    private int drinksCompletedCount = 0;
+    private int drinksRequiredForCompletion;
 
+    private int drinksCompletedCount = 0;
     private float orderTimer = 8f;
 
     private Drink currentDrink;
-    private HashSet<string> selectedIngredients;
+    private Dictionary<string, int> selectedIngredientCounts;
     private Dictionary<KeyCode, string> arrowIngredients;
 
-    // Order completion flag
     private bool orderCompleted = false;
 
-    // Sound Effects
     [Header("Sound Effects")]
-    public AudioSource audioSource;         // Assign in inspector
-    public AudioClip timerStartSFX;         // Plays when timer hits 5 seconds
-    public AudioClip correctSFX;            // Plays on correct ingredient
-    public AudioClip wrongSFX;              // Plays on wrong ingredient
-    public AudioClip orderCompleteSFX;      // Plays when order completes
+    public AudioSource audioSource;
+    public AudioClip timerStartSFX;
+    public AudioClip correctSFX;
+    public AudioClip wrongSFX;
+    public AudioClip orderCompleteSFX;
 
-    // A flag to indicate if we've already played the timerStartSFX at 5 seconds
     private bool timerSFXPlayed = false; 
 
     void Start()
     {
+        // Set drinks required based on scenario
+        if (AIDialogueScript.drinkScenario == 1)
+        {
+            drinksRequiredForCompletion = 5;
+        }
+        else if (AIDialogueScript.drinkScenario == 2)
+        {
+            drinksRequiredForCompletion = 8;
+        }
+
+        AIDialogueScript.drinksRequired = drinksRequiredForCompletion;
+        AIDialogueScript.drinksServedCorrectly = 0;
+        AIDialogueScript.playerMadeMistakesCount = 0; // Reset mistakes each time this scene starts
+
         if (drinks == null || drinks.Count == 0)
         {
-            Debug.LogError("No drinks available. Please add drinks in the Inspector.");
+            Debug.LogError("No drinks available.");
             return;
         }
 
@@ -102,15 +114,14 @@ public class DrinkManager : MonoBehaviour
         if (currentDrink.requiredIngredients == null || currentDrink.ingredientIcons == null ||
             currentDrink.requiredIngredients.Count != currentDrink.ingredientIcons.Count)
         {
-            Debug.LogError($"Drink data for '{currentDrink.drinkName}' is incomplete or invalid.");
+            Debug.LogError($"Drink data for '{currentDrink.drinkName}' is incomplete.");
             return;
         }
 
         drinkDisplay.sprite = currentDrink.drinkImage;
         orderText.text = "Order: " + currentDrink.drinkName;
         feedbackText.text = "";
-
-        selectedIngredients = new HashSet<string>();
+        selectedIngredientCounts = new Dictionary<string, int>();
 
         ResetSelectedIngredients();
         AssignArrowIngredients();
@@ -121,30 +132,57 @@ public class DrinkManager : MonoBehaviour
 
         timerText.text = "";
         timerText.color = Color.white;
-
-        timerSFXPlayed = false; // Reset this so we can play the timer sound again next round
+        timerSFXPlayed = false;
     }
 
     void AssignArrowIngredients()
     {
         arrowIngredients = new Dictionary<KeyCode, string>();
 
+        // Create a list of required ingredients, accounting for duplicates
         List<string> ingredientPool = new List<string>(currentDrink.requiredIngredients);
         List<Sprite> iconPool = new List<Sprite>(currentDrink.ingredientIcons);
 
-        while (ingredientPool.Count < 4)
+        // Create a HashSet of required ingredient names for efficient lookup
+        HashSet<string> requiredIngredientNames = new HashSet<string>(currentDrink.requiredIngredients);
+
+        // Filter dummy ingredients to exclude any required ingredients
+        List<string> filteredDummyNames = new List<string>();
+        List<Sprite> filteredDummyIcons = new List<Sprite>();
+
+        for (int i = 0; i < dummyIngredientNames.Length; i++)
         {
-            int dummyIndex = Random.Range(0, dummyIngredientNames.Length);
-            ingredientPool.Add(dummyIngredientNames[dummyIndex]);
-            iconPool.Add(dummyIngredientIcons[dummyIndex]);
+            string dummyName = dummyIngredientNames[i];
+            if (!requiredIngredientNames.Contains(dummyName))
+            {
+                filteredDummyNames.Add(dummyName);
+                filteredDummyIcons.Add(dummyIngredientIcons[i]);
+            }
         }
 
-        // Shuffle
+        // Add dummy ingredients until we have 4 total ingredients
+        while (ingredientPool.Count < 4 && filteredDummyNames.Count > 0)
+        {
+            int randomIndex = Random.Range(0, filteredDummyNames.Count);
+            ingredientPool.Add(filteredDummyNames[randomIndex]);
+            iconPool.Add(filteredDummyIcons[randomIndex]);
+            filteredDummyNames.RemoveAt(randomIndex);
+            filteredDummyIcons.RemoveAt(randomIndex);
+        }
+
+        // Shuffle the ingredientPool and iconPool together
         for (int i = ingredientPool.Count - 1; i > 0; i--)
         {
             int randomIndex = Random.Range(0, i + 1);
-            (ingredientPool[i], ingredientPool[randomIndex]) = (ingredientPool[randomIndex], ingredientPool[i]);
-            (iconPool[i], iconPool[randomIndex]) = (iconPool[randomIndex], iconPool[i]);
+            // Swap ingredient names
+            string tempName = ingredientPool[i];
+            ingredientPool[i] = ingredientPool[randomIndex];
+            ingredientPool[randomIndex] = tempName;
+
+            // Swap corresponding icons
+            Sprite tempIcon = iconPool[i];
+            iconPool[i] = iconPool[randomIndex];
+            iconPool[randomIndex] = tempIcon;
         }
 
         for (int i = 0; i < 4; i++)
@@ -158,20 +196,47 @@ public class DrinkManager : MonoBehaviour
                 _ => KeyCode.None
             };
 
-            arrowIngredients[arrowKey] = ingredientPool[i];
-            ingredientTexts[i].text = ingredientPool[i];
-            ingredientImages[i].sprite = iconPool[i];
-            ingredientImages[i].enabled = true;
+            if (i < ingredientPool.Count)
+            {
+                arrowIngredients[arrowKey] = ingredientPool[i];
+                ingredientTexts[i].text = ingredientPool[i];
+                ingredientImages[i].sprite = iconPool[i];
+                ingredientImages[i].enabled = true;
+            }
+            else
+            {
+                // If there are fewer than 4 ingredients, disable remaining UI elements
+                ingredientTexts[i].text = "";
+                ingredientImages[i].sprite = null;
+                ingredientImages[i].enabled = false;
+            }
         }
     }
 
     void DisplayNeededIngredients()
     {
+        // Count the required instances of each ingredient
+        Dictionary<string, int> requiredIngredientCounts = new Dictionary<string, int>();
+        foreach (var ingredient in currentDrink.requiredIngredients)
+        {
+            if (requiredIngredientCounts.ContainsKey(ingredient))
+            {
+                requiredIngredientCounts[ingredient]++;
+            }
+            else
+            {
+                requiredIngredientCounts[ingredient] = 1;
+            }
+        }
+
+        // Display the required ingredients with their counts
         for (int i = 0; i < neededIngredientTexts.Length; i++)
         {
-            if (i < currentDrink.requiredIngredients.Count)
+            if (i < requiredIngredientCounts.Count)
             {
-                neededIngredientTexts[i].text = currentDrink.requiredIngredients[i];
+                string ingredient = new List<string>(requiredIngredientCounts.Keys)[i];
+                int count = requiredIngredientCounts[ingredient];
+                neededIngredientTexts[i].text = $"{ingredient} x{count}";
             }
             else
             {
@@ -182,11 +247,34 @@ public class DrinkManager : MonoBehaviour
 
     public void CheckIngredient(string selectedIngredient)
     {
-        bool correctChoice = currentDrink.requiredIngredients.Contains(selectedIngredient) && !selectedIngredients.Contains(selectedIngredient);
+        bool isRequired = currentDrink.requiredIngredients.Contains(selectedIngredient);
+        bool alreadySelectedEnough = false;
+
+        if (isRequired)
+        {
+            int requiredCount = currentDrink.requiredIngredients.FindAll(x => x == selectedIngredient).Count;
+            if (selectedIngredientCounts.ContainsKey(selectedIngredient))
+            {
+                if (selectedIngredientCounts[selectedIngredient] >= requiredCount)
+                {
+                    alreadySelectedEnough = true;
+                }
+            }
+        }
+
+        bool correctChoice = isRequired && !alreadySelectedEnough;
 
         if (correctChoice)
         {
-            selectedIngredients.Add(selectedIngredient);
+            if (selectedIngredientCounts.ContainsKey(selectedIngredient))
+            {
+                selectedIngredientCounts[selectedIngredient]++;
+            }
+            else
+            {
+                selectedIngredientCounts[selectedIngredient] = 1;
+            }
+
             PlaySFX(correctSFX);
 
             for (int i = 0; i < selectedIngredientImages.Length; i++)
@@ -220,23 +308,43 @@ public class DrinkManager : MonoBehaviour
 
             ShowFeedbackMessage("Correct!");
 
-            // Check if order is complete
-            if (selectedIngredients.Count == currentDrink.requiredIngredients.Count)
+            // Check if all required ingredients have been selected
+            bool allIngredientsSelected = true;
+            foreach (var req in currentDrink.requiredIngredients)
+            {
+                if (!selectedIngredientCounts.ContainsKey(req) || selectedIngredientCounts[req] < currentDrink.requiredIngredients.FindAll(x => x == req).Count)
+                {
+                    allIngredientsSelected = false;
+                    break;
+                }
+            }
+
+            if (allIngredientsSelected)
             {
                 ShowFeedbackMessage("Order Completed!", false);
                 drinksCompletedCount++;
+                AIDialogueScript.drinksServedCorrectly = drinksCompletedCount;
 
-                float progress = (float)drinksCompletedCount / drinksRequiredForCompletion;
+                float progress = (float)drinksCompletedCount / AIDialogueScript.drinksRequired;
                 progressBar.fillAmount = progress;
 
-                // Once order is completed, stop the timer display
                 orderCompleted = true;
                 timerText.text = "";
                 PlaySFX(orderCompleteSFX);
 
-                if (drinksCompletedCount >= drinksRequiredForCompletion)
+                if (drinksCompletedCount >= AIDialogueScript.drinksRequired)
                 {
-                    Invoke("LoadNextScene", 2f);
+                    // If first scenario done (5 drinks), load AI dialogue and switch scenario
+                    if (AIDialogueScript.drinkScenario == 1)
+                    {
+                        AIDialogueScript.drinkScenario = 2; // Next time we load this scene, 8 drinks required
+                        Invoke("LoadAIDialogueScene", 2f);
+                    }
+                    else
+                    {
+                        // If second scenario (8 drinks) done, load AI Dialogue with new script
+                        Invoke("LoadSecondAIDialogueScene", 2f);
+                    }
                 }
                 else
                 {
@@ -246,9 +354,9 @@ public class DrinkManager : MonoBehaviour
         }
         else
         {
-            // Wrong choice
             PlaySFX(wrongSFX);
-            ShowFeedbackMessage("Wrong ingredient or already selected!");
+            ShowFeedbackMessage("Wrong ingredient or already selected enough!");
+            AIDialogueScript.playerMadeMistakesCount++; // Increment mistake count
         }
     }
 
@@ -277,11 +385,7 @@ public class DrinkManager : MonoBehaviour
 
     void UpdateTimer()
     {
-        if (orderCompleted)
-        {
-            // Order is completed, don't continue updating or showing the timer
-            return;
-        }
+        if (orderCompleted) return;
 
         if (orderTimer > 0f)
         {
@@ -294,47 +398,25 @@ public class DrinkManager : MonoBehaviour
                 return;
             }
 
-            // Check if we just crossed the 5-second threshold
             if (previousTimer > 5f && orderTimer <= 5f && !timerSFXPlayed)
             {
-                // Play the timer start SFX
                 PlaySFX(timerStartSFX);
                 timerSFXPlayed = true;
             }
         }
 
-        // Show the timer at the top if orderTimer <= 5 and > 0
         if (orderTimer <= 5f && orderTimer > 0f)
         {
             int timeLeft = Mathf.CeilToInt(orderTimer);
-
-            // Color coding based on timeLeft:
-            // 5,4 = white
-            // 3 = yellow
-            // 2 = orange
-            // 1 = red
-            if (timeLeft == 3)
-            {
-                timerText.color = Color.yellow;
-            }
-            else if (timeLeft == 2)
-            {
-                timerText.color = new Color(1f, 0.5f, 0f); // Orange
-            }
-            else if (timeLeft == 1)
-            {
-                timerText.color = Color.red;
-            }
-            else
-            {
-                timerText.color = Color.white;
-            }
+            if (timeLeft == 3) timerText.color = Color.yellow;
+            else if (timeLeft == 2) timerText.color = new Color(1f, 0.5f, 0f);
+            else if (timeLeft == 1) timerText.color = Color.red;
+            else timerText.color = Color.white;
 
             timerText.text = timeLeft.ToString();
         }
         else
         {
-            // Above 5 seconds or below 0, no timer is shown
             timerText.text = "";
         }
     }
@@ -347,9 +429,14 @@ public class DrinkManager : MonoBehaviour
         }
     }
 
-    void LoadNextScene()
+    void LoadAIDialogueScene()
     {
         SceneManager.LoadScene("AI_Dialogue");
+    }
+
+    void LoadSecondAIDialogueScene()
+    {
+        SceneManager.LoadScene("Win");
     }
 
     void LoadFailScene()

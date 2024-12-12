@@ -17,7 +17,13 @@ public class MenuController : MonoBehaviour
     // Function called when the Play button is pressed
     public void PlayGame()
     {
-        StartCoroutine(TransitionToGame());
+        StartCoroutine(TransitionToScene("Intro"));
+    }
+
+    // Function called when the Help button is pressed
+    public void ShowHelp()
+    {
+        StartCoroutine(TransitionToScene("Help"));
     }
 
     // Function called when the Quit button is pressed
@@ -31,7 +37,13 @@ public class MenuController : MonoBehaviour
     #endif
     }
 
-    private IEnumerator TransitionToGame()
+    // Optional: Function to return to the Main Menu from Help or other scenes
+    public void BackToMainMenu()
+    {
+        StartCoroutine(TransitionToScene("MainMenu"));
+    }
+
+    private IEnumerator TransitionToScene(string sceneName)
     {
         float elapsedTime = 0f;
         float initialVolume = 0f;
@@ -91,7 +103,7 @@ public class MenuController : MonoBehaviour
             backgroundMusic.Stop();
         }
 
-        // Load the next scene
-        SceneManager.LoadScene("Intro");
+        // Load the specified scene
+        SceneManager.LoadScene(sceneName);
     }
 }
